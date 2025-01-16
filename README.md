@@ -65,6 +65,6 @@ Replique a modelagem do projeto lógico de banco de dados para o cenário de e-c
 
 ### Resultados
 
-![Arquivo de criação do banco de dados](e-commerce/03_bd_e-commerce.sql)
+[Arquivo de criação do banco de dados](e-commerce/03_bd_e-commerce.sql)
 
-![Arquivo da inserção de dados e queries](e-commerce/03_queries_and_data_insertion.sql)
+[Arquivo da inserção de dados e queries](e-commerce/03_queries_and_data_insertion.sql)
