@@ -1,7 +1,6 @@
--- Seleciona o banco de dados
 USE company;
 
--- Criação da procedure de manipulação de dados
+-- criação da procedure de manipulação de dados ------------------------------------------------------------------------
 DELIMITER $$
 
 CREATE PROCEDURE manage_data(
@@ -46,7 +45,7 @@ END$$
 
 DELIMITER ;
 
--- Testando a procedure
+-- Testando a procedure ------------------------------------------------------------------------
 
 -- 1. Inserir um novo empregado
 CALL manage_data(1, 'employee', '123123123', 'Carlos', 'Silva', 45000);

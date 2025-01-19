@@ -1,6 +1,8 @@
 # Desafio Banco de Dados DIO 
 
-## Descrição do Desafio 1 - E-Commerce
+## Desafio 1 - E-Commerce
+
+### Descrição
 
 O esquema deverá ser adicionado a um repositório do Github para futura avaliação do desafio de projeto. Adicione ao Readme a descrição do projeto conceitual para fornecer o contexto sobre seu esquema.
 
@@ -14,7 +16,7 @@ Refine o modelo apresentado acrescentando os seguintes pontos:
 
 ![Modelo Lógico E-Commerce](e-commerce/e-commerce.png)
 
-## Descrição Desafio 2 - Oficina Mecânica
+## Desafio 2 - Oficina Mecânica
 
 ### Objetivo:
 
@@ -34,8 +36,9 @@ Cria o esquema conceitual para o contexto de oficina com base na narrativa forne
 ![Modelo Lógico Oficina Mecânica](oficina/oficina.png)
 
 
-## Descrição do Desafio 3 - Projeto Lógico E-Commerce
+## Desafio 3 - Projeto Lógico E-Commerce
 
+### Descrição 
 
 Replique a modelagem do projeto lógico de banco de dados para o cenário de e-commerce. Fique atento as definições de chave primária e estrangeira, assim como as constraints presentes no cenário modelado. Perceba que dentro desta modelagem haverá relacionamentos presentes no modelo EER. Sendo assim, consulte como proceder para estes casos. Além disso, aplique o mapeamento de modelos aos refinamentos propostos no módulo de modelagem conceitual.
 
@@ -70,7 +73,7 @@ Replique a modelagem do projeto lógico de banco de dados para o cenário de e-c
 [Arquivo da inserção de dados e queries - E-commerce](e-commerce/03_queries_and_data_insertion.sql)
 
 
-## Descrição do Desafio 4 - Projeto Lógico Oficina
+## Desafio 4 - Projeto Lógico Oficina
 
 ### Descrição
 
@@ -85,13 +88,14 @@ Após a criação do esquema lógico, realize a criação do Script SQL para cri
 - Condições de filtros aos grupos – HAVING Statement;
 - Crie junções entre tabelas para fornecer uma perspectiva mais complexa dos dados;
 
-[Arquivo de criação do banco de dados Oficina](oficina/04_bd_oficina.sql)
+### Resultados 
 
-[Arquivo da inserção de dados e queries - Oficina](oficina/04_queries_and_data_insertion.sql)
+- [Arquivo de criação do banco de dados Oficina](oficina/04_bd_oficina.sql)
+- [Arquivo da inserção de dados e queries - Oficina](oficina/04_queries_and_data_insertion.sql)
 
 ## Desafio 5 
 
-### 5.1 Criando índices em Banco de Dados 
+### *5.1 Criando índices em Banco de Dados* 
 
 ### Descricao 
 
@@ -109,7 +113,7 @@ Criação de índices para consultas para o cenário de company com as perguntas
 - Crie o índice para cada tabela envolvida (de acordo com a necessidade) 
 - Tipo de indice utilizado e motivo da escolha (via comentário no script ou readme) 
 
-### Resultado 
+### Resultados 
 
 - [Script SQL para criacao do banco de dados company](company/create_db_company.sql)
 - [Script SQL para insercao de dados no banco de dados company](company/index_db_company.sql)
@@ -120,9 +124,9 @@ Criação de índices para consultas para o cenário de company com as perguntas
 2. O índice `idx_dept_location_dnumber` otimiza a busca de departamentos por cidade, já que a tabela `dept_location` será filtrada frequentemente pelo atributo `d_number`.
 3. O índice `idx_department_dnumber` acelera as junções entre `department` e outras tabelas, essencial para diversas consultas, como a relação de empregados por departamento.
 
-### 5.2 - Utilização de procedures para manipulação de dados em Banco de Dados 
+### *5.2 - Utilização de procedures para manipulação de dados em Banco de Dados*
 
-#### Objetivo:  
+### Objetivo:  
 
 Criar uma procedure que possua as instruções de inserção, remoção e atualização de dados no banco de dados. As instruções devem estar dentro de estruturas condicionais (como CASE ou IF).  
 
@@ -134,8 +138,46 @@ Sendo assim, altere a procedure abaixo para receber as informações supracitada
 
 Script SQL com a procedure criada e chamada para manipular os dados de universidade e e-commerce. Podem ser criados dois arquivos distintos, assim como a utilização do mesmo script para criação das procedures. Fique atento para selecionar o banco de dados antes da criação da procedure.  
 
-#### Resultado
+### Resultado
 
 - [Script SQL para criacao da procedure](company/procedure_db_company.sql)
 
+### *5.3 Personalizando acessos com views*
 
+### Descrição
+
+O objetivo deste projeto é criar uma série de views no banco de dados "Company" para facilitar a recuperação de informações específicas e relevantes para análises de negócios. Além disso, o projeto implementa controles de acesso baseados em papéis (RBAC), diferenciando os acessos entre usuários gerentes e empregados.
+
+**Views e Permissões:**
+
+- As views otimizam consultas específicas e garantem segurança ocultando detalhes desnecessários.
+- As permissões foram configuradas para alinhar o acesso às responsabilidades de cada usuário.
+
+### Resultado
+
+- [CODE1](company/code1_db_company.sql)
+- teste de permissões: 
+```sql
+    -- Conectar como 'manager'
+mysql -u manager -p
+USE company;
+SELECT * FROM employees_per_dept_location;
+
+-- Conectar como 'employee'
+mysql -u employee -p
+USE company;
+SELECT * FROM employees_with_dependents_and_roles;
+
+```
+
+### *5.4 Criando gatilhos para cenário de e-commerce*
+
+### Objetivo: 
+
+Sabemos que a criação de triggers está associadas a ações que podem ser tomadas em momento anterior ou posterior a inserção, ou atualização dos dados. Além disso, em casos de remoção podemos utilizar as triggers. Sendo assim, crie as seguintes triggers para o cenário de e-commerce. 
+
+### Resultados
+
+- Exemplo de trigger para base. [CODE2](company/code2_db_company.sql)
+- Criando triggers. [CODE3](company/code3_db_company.sql)
+- Teste de triggers. [CODE4](company/code4_db_company.sql)
